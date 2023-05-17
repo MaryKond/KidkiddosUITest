@@ -15,41 +15,50 @@ public class BasePage {
     protected static WebDriverWait wait;
     protected static final Logger logger = LogManager.getLogger(BasePage.class);
 
-    public void setWebDriver(WebDriver webDriver){
-        this.webDriver=webDriver;
+    public void setWebDriver(WebDriver webDriver) {
+        this.webDriver = webDriver;
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(3));
 
     }
 
-    protected void clickElementByXpath(String xpath){
+    protected void clickElementByXpath(String xpath) {
         logger.info("Clicking element with xpath:" + xpath);
         findElementByXpath(xpath).click();
     }
-    protected void sendTextToElementByXpath(String xpath, String text){
+
+    protected void sendTextToElementByXpath(String xpath, String text) {
         findElementByXpath(xpath).sendKeys(text);
     }
 
     //not the best way to execute
-    protected boolean elementExists(String xpath){
+    protected boolean elementExists(String xpath) {
         try {
             logger.info("Checking element with xpath:" + xpath);
             //findElementByXpath(xpath);
             webDriver.findElement(By.xpath(xpath));
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
             return true;
-        }catch(Exception err){
+        } catch (Exception err) {
             return false;
         }
     }
 
     //wrapper
-    protected WebElement findElementByXpath(String xpath){
+    protected WebElement findElementByXpath(String xpath) {
         WebElement element;
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         element = webDriver.findElement(By.xpath(xpath));
         return element;
     }
-    protected String getCurrentPageURL(){
+
+    protected WebElement findElementByPartialLinkText(String text) {
+        WebElement element;
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(text)));
+        element = webDriver.findElement(By.partialLinkText(text));
+        return element;
+    }
+
+    protected String getCurrentPageURL() {
         return webDriver.getCurrentUrl();
 
     }

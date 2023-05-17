@@ -5,10 +5,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class EnglishOnlyPage extends BasePage {
     private static final String ENGLISH_ONLY_HEADER = "//h1[text()='English Only']";
+    private static final String BOOK_TITLE="//a[@class='grid-view-item__link'and contains(@href,'/i-love-to-go-to-daycare')]";
 
     public boolean isTitleVisible() {
         return elementExists(ENGLISH_ONLY_HEADER);
     }
+
+
+    public boolean isBookNameVisible() {
+        return elementExists(BOOK_TITLE);
+    }
+
+    public SomeEnglishBookPage clickOnBook(){
+        clickElementByXpath(BOOK_TITLE);
+        return new SomeEnglishBookPage();
+    }
+
+//    public boolean bookExists(){
+//        return elementExists(BOOK_TITLE);
+//    }
+
 
     public boolean closePopUpWindow() {
         try {
@@ -20,4 +36,6 @@ public class EnglishOnlyPage extends BasePage {
             return false;
         }
     }
+
+
 }
