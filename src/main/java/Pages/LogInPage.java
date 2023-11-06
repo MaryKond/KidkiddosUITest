@@ -8,9 +8,10 @@ public class LogInPage extends BasePage {
     private static final String EMAIL_XPATH = "//input[@id='CustomerEmail']";
     public static final String PASSWORD_XPATH = "//input[@id='CustomerPassword']";
     public static final String SIGN_IN_XPATH = "//input[@type='submit']";
+    public static final String ERROR_MESSAGE = "//*[contains(text(),'Please enter an email address.')]";
     //public static final String [] fields = {EMAIL_XPATH,PASSWORD_XPATH};
 
-
+    private static BasePage basePage;
     public void navigateToLogInPage() {
         webDriver.get(Consts.LOGIN_URL);
     }
@@ -30,9 +31,18 @@ public class LogInPage extends BasePage {
     }
 
     public void clickSignIn() {
-        clickElementByXpath(EMAIL_XPATH);
-        clickElementByXpath(PASSWORD_XPATH);
+
+        //clickElementByXpath(EMAIL_XPATH);
+        basePage= new BasePage();
+        basePage.sendTextToElementByXpath(EMAIL_XPATH," ");
+        //clickElementByXpath(PASSWORD_XPATH);
         clickElementByXpath(SIGN_IN_XPATH);
     }
+    public String errorCheck() {
+   basePage.sendTextToElementByXpath(EMAIL_XPATH, " ");
+    return ERROR_MESSAGE;
+    }
+        //basePage.findElementByXpath(ERROR_MESSAGE);}
+
 
 }

@@ -49,6 +49,7 @@ public class BasePage {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         element = webDriver.findElement(By.xpath(xpath));
         return element;
+
     }
 
     protected WebElement findElementByPartialLinkText(String text) {

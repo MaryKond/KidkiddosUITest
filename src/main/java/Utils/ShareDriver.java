@@ -19,7 +19,7 @@ public class ShareDriver {
 
 
 
-    protected static WebDriver getWebDriver(Browser browser ){
+    public static WebDriver getWebDriver(Browser browser ){
         switch (browser){
             case CHROME:
                 WebDriverManager.chromedriver().setup();

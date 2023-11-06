@@ -1,20 +1,18 @@
 import Pages.LogInPage;
-import Pages.MainPage;
-import Utils.ShareDriver;
 import Utils.UseCaseBase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LogInNegativeTest extends UseCaseBase {
-static WebDriver driver;
 
+    protected static WebDriverWait wait;
     private static LogInPage loginPage;
+
+
     @BeforeAll
     public static void classSetUp (){
         loginPage=new LogInPage();
@@ -26,11 +24,17 @@ static WebDriver driver;
     }
 
    @Test
-    public void emptyFieldsTest()throws InterruptedException {
+    public void emptyFieldsTest() {
+
+
       loginPage.clickSignIn();
-       Thread.sleep(1000);
-       WebElement error = driver.findElement(By.xpath("//*[contains(text(),'Incorrect email or password.')]"));
-       assertNotNull(error);
+      String error= loginPage.errorCheck();
+      assertNotNull(error);
+       //wait = new WebDriverWait(webDiver, Duration.ofSeconds(3));
+
+      // wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='submit']")));
+
+
 
    }
 
