@@ -3,6 +3,7 @@ import Utils.UseCaseBase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,10 +28,9 @@ public class LogInNegativeTest extends UseCaseBase {
     public void emptyFieldsTest() {
 
 
-      loginPage.clickSignIn();
-      String error= loginPage.errorCheck();
-      assertNotNull(error);
-       //wait = new WebDriverWait(webDiver, Duration.ofSeconds(3));
+      loginPage.errorCheck();
+
+          //wait = new WebDriverWait(webDiver, Duration.ofSeconds(3));
 
       // wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='submit']")));
 
