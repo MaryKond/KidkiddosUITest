@@ -3,12 +3,11 @@ import Utils.UseCaseBase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LogInNegativeTest extends UseCaseBase {
+public class LogInNegativeEmptyEmailTest extends UseCaseBase {
 
     protected static WebDriverWait wait;
     private static LogInPage loginPage;
@@ -24,19 +23,14 @@ public class LogInNegativeTest extends UseCaseBase {
         loginPage.navigateToLogInPage();
     }
 
-   @Test
+    @Test
     public void emptyFieldsTest() {
-
-
-      loginPage.errorCheck();
-
-          //wait = new WebDriverWait(webDiver, Duration.ofSeconds(3));
-
-      // wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='submit']")));
-
-
-
+        Boolean exist1 = loginPage.checkFieldEmailExist();
+        assertTrue(exist1);
+        Boolean emptyFieldsError = loginPage.errorCheck();
+        assertTrue(emptyFieldsError);
+    }
    }
 
 
-}
+
