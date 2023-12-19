@@ -29,8 +29,10 @@ public class LoginNegativeWrongEmailTest extends UseCaseBase{
 
                 Boolean exist2 = loginPage.checkFieldPasswordExist();
                 assertTrue(exist2);
-            loginPage.wrongEmailErrorCheck();
-                Boolean wrongEmail = loginPage.errorCheck();
+                Boolean exist3 = loginPage.checkFieldEmailExist();
+                assertTrue(exist3);
+
+                Boolean wrongEmail = loginPage.wrongEmailErrorCheck();
                 assertTrue(wrongEmail);
 
 //            wait = new WebDriverWait(webDiver, Duration.ofSeconds(3));

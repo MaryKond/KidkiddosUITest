@@ -12,7 +12,8 @@ public class LogInPage extends BasePage {
     public static final String PASSWORD_XPATH = "//input[@id='CustomerPassword']";
     public static final String SIGN_IN_XPATH = "//input[@type='submit']";
     public static final String ERROR_MESSAGE = "//*[contains(text(),'Please enter an email address.')]";
-    public static final String WRONG_EMAIL_ERROR_MESSAGE = "//*[contains(text(),'Incorrect email or password.']";
+    //public static final String WRONG_EMAIL_ERROR_MESSAGE = "//*[contains(text(),'Incorrect email or password.']";
+    public static final String WRONG_EMAIL_ERROR_MESSAGE = "//li[contains(text(),'Incorrect email or password.')]" ;
     //public static final String [] fields = {EMAIL_XPATH,PASSWORD_XPATH};
 
     private static BasePage basePage;
@@ -54,11 +55,12 @@ public class LogInPage extends BasePage {
 
         public boolean wrongEmailErrorCheck() throws InterruptedException {
             basePage= new BasePage();
-            basePage.sendTextToElementByXpath(EMAIL_XPATH, "anna.moralez@mp3.com");
+            basePage.sendTextToElementByXpath(EMAIL_XPATH, "blah.blah@gmail.com");
             Thread.sleep(5000);
-            basePage.sendTextToElementByXpath(PASSWORD_XPATH, "1234567!");
+            basePage.sendTextToElementByXpath(PASSWORD_XPATH, "8hfhfgdjdjdgids!");
             Thread.sleep(5000);
             clickElementByXpath(SIGN_IN_XPATH);
+            Thread.sleep(5000);
             Boolean error2=elementExists(WRONG_EMAIL_ERROR_MESSAGE);
             return error2;
         }

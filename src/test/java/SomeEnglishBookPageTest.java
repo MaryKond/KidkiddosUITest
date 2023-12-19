@@ -5,6 +5,10 @@ import Utils.UseCaseBase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SomeEnglishBookPageTest extends UseCaseBase {
     private static EnglishOnlyPage englishOnlyPage;
@@ -22,10 +26,41 @@ public class SomeEnglishBookPageTest extends UseCaseBase {
     public void beforeTest(){
         mainPage.navigateToToMainPage();
         mainPage.navigateEnglishOnlyPage();
-        englishOnlyPage.clickOnBook();
-    }
-    @Test
-    public void chooseHardcover(){
 
     }
-}
+    @Test
+    public void clickOnBook(){
+        englishOnlyPage.isBookNameVisible();
+
+        englishOnlyPage.closePopUpWindow();
+
+        englishOnlyPage.clickOnBook();
+
+        Boolean exist=englishBookPage.isBookPageHeaderVisible();
+        assertTrue(exist);}
+
+        @Test
+        public void verifyFormat(){
+            englishOnlyPage.clickOnBook();
+
+        Boolean format = englishBookPage.locateFormat();
+        assertTrue(format);
+            //englishOnlyPage.closePopUpWindow();
+
+            englishBookPage.chooseHardcover();
+
+        String value = englishBookPage.getFormatName();
+        assertEquals("Hardcover", value);
+    }
+
+
+
+
+    }
+//    @Test
+//    public void chooseHardcover(){
+
+
+
+
+

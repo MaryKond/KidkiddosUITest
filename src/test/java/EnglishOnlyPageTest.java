@@ -34,13 +34,6 @@ public class EnglishOnlyPageTest extends UseCaseBase {
         assertTrue(exist);
 
     }
-    @Test
-    public void clickOnBook(){
-        englishOnlyPage.isBookNameVisible();
-        englishOnlyPage.clickOnBook();
-        Boolean exist=englishBookPage.isBookPageHeaderVisible();
-        assertTrue(exist);
 
-    }
 
 }

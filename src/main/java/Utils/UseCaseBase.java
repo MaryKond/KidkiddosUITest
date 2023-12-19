@@ -17,9 +17,9 @@ public class UseCaseBase {
         webDriver= ShareDriver.getWebDriver(ShareDriver.Browser.FIREFOX);
         page.setWebDriver(webDriver);
     }
-    @AfterAll
-    public static void tearDown(){
-        ShareDriver.closeDriver();
-        webDriver=null;
-    }
+//    @AfterAll
+//    public static void tearDown(){
+//        ShareDriver.closeDriver();
+//        webDriver=null;
+//    }
 }
