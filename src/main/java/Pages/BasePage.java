@@ -63,5 +63,8 @@ public class BasePage {
         return webDriver.getCurrentUrl();
 
     }
+    protected void clearField(String xpath){
+        findElementByXpath(xpath).clear();
+    }
 
 }
