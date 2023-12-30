@@ -7,8 +7,12 @@ public class SomeEnglishBookPage extends BasePage {
     private static final String FORMAT = "//select[@id='SingleOptionSelector-0']";
     private static final String HARDCOVER = "//*[text() = 'Hardcover']";
     private static final String QTY = "//input[@id='Quantity']";
+    private static final String CART_QTY2 = "//input[@class='cart__qty-input']";
     private static final String ADD_TO_CART = "//span[@id='AddToCartText-product-template']";
     private static final String YOUR_CART = "//*[text() = 'Your cart']";
+    private static final String UPDT_BUTTON = "//input[@class = 'btn btn--secondary cart__update cart__update--large small--hide']";
+    private static final String PRICE = "//td[@class = 'cart__price-wrapper cart-flex-item']//descendant::span[@class = 'currency-converter-amount cbb-price-currency-CAD']";   // $x("td[@class = 'cart__price-wrapper cart-flex-item']//descendant::span[@class = 'cbb-price-digits']") ""
+    private static final String TOTAL_PRICE = "//td[@class = 'text-right small--hide']//descendant::span[@class = 'cbb-price-digits']"; //td[@class = 'text-right small--hide']"
 
 
     public boolean isBookPageHeaderVisible() {
@@ -38,10 +42,7 @@ public class SomeEnglishBookPage extends BasePage {
         sendTextToElementByXpath(QTY,"5");
         return true;
     }
-    public String getQty() {
-        String qtyValue= webDriver.findElement(By.xpath(QTY)).getAttribute("value");
-        return qtyValue;
-    }
+
 
 
     public CartPage clickAddToCart(){
@@ -50,6 +51,35 @@ public class SomeEnglishBookPage extends BasePage {
     }
     public boolean isPageTitleVisible() {
         return elementExists(YOUR_CART);
+    }
+    public boolean NewQtyCart(){
+        elementExists(CART_QTY2);
+        clearField(CART_QTY2);
+        sendTextToElementByXpath(CART_QTY2,"6");
+        return true;
+}
+    public String getQty() {
+        String qtyValue= getValue(QTY);
+        return qtyValue;
+    }
+    public String getQtyInCart() {
+        String qtyValueInCart= getValue(CART_QTY2);
+        return qtyValueInCart;
+    }
+    public boolean updateCart(){
+        elementExists(UPDT_BUTTON);
+        clickElementByXpath(UPDT_BUTTON);
+        return true;
+    }
+    public String getPrice() {
+        elementExists(PRICE);
+        String priceValue= getValue(PRICE);
+        return priceValue;
+    }
+    public String getTotal() {
+        elementExists(TOTAL_PRICE);
+        String totalValue= getValue(TOTAL_PRICE);
+        return totalValue;
     }
 }
 

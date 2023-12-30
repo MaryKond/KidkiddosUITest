@@ -15,6 +15,8 @@ public class SomeEnglishBookPageTest extends UseCaseBase {
     private static EnglishOnlyPage englishOnlyPage;
     private static MainPage mainPage;
     private static SomeEnglishBookPage englishBookPage;
+    private int priceForOne;
+
 
     @BeforeAll
     public static void classSetUp() {
@@ -35,7 +37,7 @@ public class SomeEnglishBookPageTest extends UseCaseBase {
     public void clickOnBook() {
         englishOnlyPage.isBookNameVisible();
 
-        englishOnlyPage.closePopUpWindow();
+        //englishOnlyPage.closePopUpWindow();
 
         englishOnlyPage.clickOnBook();
 
@@ -49,10 +51,10 @@ public class SomeEnglishBookPageTest extends UseCaseBase {
         //englishOnlyPage.closePopUpWindow();
 //CHANGING FORMAT TO HARDCOVER
         englishBookPage.chooseHardcover();
-//VERIFYING CORRECT FORMAT
+        //VERIFYING CORRECT FORMAT
         String value = englishBookPage.getFormatName();
         assertEquals("Hardcover", value);
-        //CHANGING Q-TY OF THE BOOK
+//CHANGING Q-TY OF THE BOOK
         englishBookPage.chooseNewQty();
         String quantity = englishBookPage.getQty();
         assertEquals("5", quantity);
@@ -62,7 +64,31 @@ public class SomeEnglishBookPageTest extends UseCaseBase {
         Boolean pageExist = englishBookPage.isPageTitleVisible();
         englishOnlyPage.closePopUpWindow();
         assertTrue(pageExist);
+//CHANGING QTY OF BOOKS IN CART
+        englishBookPage.NewQtyCart();
+        String quantityInCart = englishBookPage.getQtyInCart();
+        assertEquals("6", quantityInCart);
+        englishOnlyPage.closePopUpWindow();
+
+//UPDATING THE CART
+        englishBookPage.updateCart();
+        englishOnlyPage.closePopUpWindow();
+//VERIFYING THE UPDATED PRICE FOR THE NEW Q-TY OF BOOKS
+        //String booksInCart = englishBookPage.getQtyInCart();
+
+        int qty = Integer.parseInt(quantityInCart);
+        String priceText = englishBookPage.getPrice();
+        String totalText = englishBookPage.getTotal();
+
+
+        int priceForOne = Integer.parseInt(priceText);
+
+        int total = priceForOne * qty;
+        assertEquals(total, totalText);
+
+
     }
+
 
 }
 

@@ -66,5 +66,9 @@ public class BasePage {
     protected void clearField(String xpath){
         findElementByXpath(xpath).clear();
     }
+    public String getValue(String xpath) {
+        String qtyValue= webDriver.findElement(By.xpath(xpath)).getAttribute("value");
+        return qtyValue;
+    }
 
 }
