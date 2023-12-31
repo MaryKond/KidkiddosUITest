@@ -71,14 +71,14 @@ public class SomeEnglishBookPage extends BasePage {
         clickElementByXpath(UPDT_BUTTON);
         return true;
     }
-    public String getPrice() {
+    public String getPriceText() {
         elementExists(PRICE);
-        String priceValue= getValue(PRICE);
+        String priceValue= getText(PRICE);
         return priceValue;
     }
-    public String getTotal() {
+    public String getTotalText() {
         elementExists(TOTAL_PRICE);
-        String totalValue= getValue(TOTAL_PRICE);
+        String totalValue= getText(TOTAL_PRICE);
         return totalValue;
     }
 }

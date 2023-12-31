@@ -70,5 +70,9 @@ public class BasePage {
         String qtyValue= webDriver.findElement(By.xpath(xpath)).getAttribute("value");
         return qtyValue;
     }
+    public String getText(String xpath) {
+        String qtyTextValue= webDriver.findElement(By.xpath(xpath)).getText();
+        return qtyTextValue;
+    }
 
 }

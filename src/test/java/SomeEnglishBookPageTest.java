@@ -48,7 +48,7 @@ public class SomeEnglishBookPageTest extends UseCaseBase {
 //LOCATING THE FORMAT FIELD
         Boolean format = englishBookPage.locateFormat();
         assertTrue(format);
-        //englishOnlyPage.closePopUpWindow();
+        englishOnlyPage.closePopUpWindow();
 //CHANGING FORMAT TO HARDCOVER
         englishBookPage.chooseHardcover();
         //VERIFYING CORRECT FORMAT
@@ -77,8 +77,8 @@ public class SomeEnglishBookPageTest extends UseCaseBase {
         //String booksInCart = englishBookPage.getQtyInCart();
 
         int qty = Integer.parseInt(quantityInCart);
-        String priceText = englishBookPage.getPrice();
-        String totalText = englishBookPage.getTotal();
+        String priceText = englishBookPage.getPriceText();
+        String totalText = englishBookPage.getTotalText();
 
 
         int priceForOne = Integer.parseInt(priceText);
