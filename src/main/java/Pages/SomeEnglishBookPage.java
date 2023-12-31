@@ -1,6 +1,9 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class SomeEnglishBookPage extends BasePage {
     private static final String BOOK_NAME = "//h1[contains(text(),'I Love to Go to Daycare ')]";
@@ -81,6 +84,31 @@ public class SomeEnglishBookPage extends BasePage {
         String totalValue= getText(TOTAL_PRICE);
         return totalValue;
     }
+    // Use regular expression to extract only digits
+
+    public String extractDigitsFromPrice(){
+
+    Pattern pattern = Pattern.compile("\\d+\\.\\d+");
+    Matcher matcher = pattern.matcher(getPriceText());
+
+    StringBuilder digitsOnly = new StringBuilder();
+        while (matcher.find()) {
+        digitsOnly.append(matcher.group());
+    }
+
+        return digitsOnly.toString();
+}public String extractDigitsFromTotal(){
+
+    Pattern pattern = Pattern.compile("\\d+\\.\\d+");
+    Matcher matcher = pattern.matcher(getTotalText());
+
+    StringBuilder digitsOnlyTotal = new StringBuilder();
+        while (matcher.find()) {
+            digitsOnlyTotal.append(matcher.group());
+    }
+
+        return digitsOnlyTotal.toString();
+}
 }
 
 

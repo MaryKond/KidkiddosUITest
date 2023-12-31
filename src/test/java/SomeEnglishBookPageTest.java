@@ -68,27 +68,26 @@ public class SomeEnglishBookPageTest extends UseCaseBase {
         englishBookPage.NewQtyCart();
         String quantityInCart = englishBookPage.getQtyInCart();
         assertEquals("6", quantityInCart);
-        englishOnlyPage.closePopUpWindow();
+        //englishOnlyPage.closePopUpWindow();
 
 //UPDATING THE CART
         englishBookPage.updateCart();
-        englishOnlyPage.closePopUpWindow();
+        //englishOnlyPage.closePopUpWindow();
 //VERIFYING THE UPDATED PRICE FOR THE NEW Q-TY OF BOOKS
         //String booksInCart = englishBookPage.getQtyInCart();
 
         int qty = Integer.parseInt(quantityInCart);
-        String priceText = englishBookPage.getPriceText();
-        String totalText = englishBookPage.getTotalText();
+        String priceText = englishBookPage.extractDigitsFromPrice();
+        String totalText = englishBookPage.extractDigitsFromTotal();
 
 
-        int priceForOne = Integer.parseInt(priceText);
+        double priceNum = Double.parseDouble(priceText);
+        double totalNum = Double.parseDouble(totalText);
 
-        int total = priceForOne * qty;
-        assertEquals(total, totalText);
-
+        double total = priceNum * qty;
+        assertEquals(total, totalNum);
 
     }
-
 
 }
 
