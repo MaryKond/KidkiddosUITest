@@ -35,26 +35,33 @@ public class LogInPage extends BasePage {
         return existsPassword;
     }
 
-    //public void clickSignIn() {
-
-        //clickElementByXpath(EMAIL_XPATH);
-
-        //basePage.sendTextToElementByXpath(EMAIL_XPATH," ");
-        //clickElementByXpath(PASSWORD_XPATH);
-
-
-    public boolean errorCheck() {
+    public boolean clickSignIn() {
         basePage= new BasePage();
-   basePage.sendTextToElementByXpath(EMAIL_XPATH, " ");
-   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(SIGN_IN_XPATH)));
-        clickElementByXpath(SIGN_IN_XPATH);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ERROR_MESSAGE)));
-        Boolean error=elementExists(ERROR_MESSAGE);
+        clickElementByXpath(EMAIL_XPATH);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(PASSWORD_XPATH)));
+        clickElementByXpath(PASSWORD_XPATH);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(SIGN_IN_XPATH)));
+       clickElementByXpath(SIGN_IN_XPATH);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(WRONG_EMAIL_ERROR_MESSAGE)));
+        Boolean error=elementExists(WRONG_EMAIL_ERROR_MESSAGE);
         return error;
     }
 
+
+
+//    public boolean errorCheck() {
+//        basePage= new BasePage();
+//   //basePage.sendTextToElementByXpath(EMAIL_XPATH, "");
+//   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(SIGN_IN_XPATH)));
+//        clickElementByXpath(SIGN_IN_XPATH);
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ERROR_MESSAGE)));
+//        Boolean error=elementExists(ERROR_MESSAGE);
+//        return error;
+//    }
+
         public boolean wrongEmailErrorCheck() throws InterruptedException {
             basePage= new BasePage();
+
             basePage.sendTextToElementByXpath(EMAIL_XPATH, "blah.blah@gmail.com");
             Thread.sleep(5000);
             basePage.sendTextToElementByXpath(PASSWORD_XPATH, "8hfhfgdjdjdgids!");

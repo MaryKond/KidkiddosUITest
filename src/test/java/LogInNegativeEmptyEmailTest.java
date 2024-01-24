@@ -27,7 +27,8 @@ public class LogInNegativeEmptyEmailTest extends UseCaseBase {
     public void emptyFieldsTest() {
         Boolean exist1 = loginPage.checkFieldEmailExist();
         assertTrue(exist1);
-        Boolean emptyFieldsError = loginPage.errorCheck();
+        //Boolean emptyFieldsError = loginPage.errorCheck();
+        Boolean emptyFieldsError = loginPage.clickSignIn();
         assertTrue(emptyFieldsError);
     }
    }

@@ -35,11 +35,6 @@ public class LoginNegativeWrongEmailTest extends UseCaseBase{
                 Boolean wrongEmail = loginPage.wrongEmailErrorCheck();
                 assertTrue(wrongEmail);
 
-//            wait = new WebDriverWait(webDiver, Duration.ofSeconds(3));
-//
-//            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='submit']")));
-
-
 
         }
 
