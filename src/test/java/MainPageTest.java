@@ -21,6 +21,7 @@ public class MainPageTest extends UseCaseBase {
     }
     @BeforeEach
     public void beforeTest(){
+
         mainPage.navigateToToMainPage();
     }
     @Test
